@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: helvetica;
+            background: #63b4ff;
+            background-image: url(img/pexels-beyzaa-yurtkuran-279977530-31144004.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+           
+        }
+        .card{
+            font-size: 20px;
+            display: flex;
+            width: 500px;
+            height: 350px;
+            border: 1px solid #fafafa;
+            border-radius: 10px;
+            padding: 15px 25px;
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0px 0px 10px rgb(160, 160, 160);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(30px);
+        }
+        h1{
+            text-align: center;
+        }
+        input{
+            height: 30px;
+            margin-top: 2px;
+            margin-bottom: 17px;
+            padding: 0 10px;
+            border-radius: 100px;
+            border: 1px solid #bebebe;
+        }
+        button{
+            height: 50px;
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            margin: 15px 0;
+            border: 0;
+            border-radius: 10px;
+            background: blue;
+            cursor: pointer;
+        }
+        button:hover{
+            background: transparent;
+            border: 1px solid blue;
+            color: blue;
+            transition: 0.2s;
+            backdrop-filter: blur(20px);
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-blur"></div>
+<div>
+    <h1>Calculadora de IMC</h1>
+
+    <label for="altura">Altura:</label>
+    <input type="number" id="altura" placeholder="Digite a sua altura">
+
+    <label for="peso">Peso:</label>
+    <input type="number" id="peso" placeholder="Digite seu peso">
+
+    <button id="calcular">calcular</button>
+</div>
+</div>
+    <script>
+        var calcular = document.getElementById("calcular");
+
+        calcular.addEventListener("click", () => {
+            var altura = +document.getElementById("altura").value;
+            var peso = +document.getElementById("peso").value;
+            var imc = peso / (altura * altura);
+            var situacao = "";
+            if (imc < 17)
+                situacao = "Muito abaixo do peso";
+            else if (imc >= 17 && imc <= 18.49)
+                situacao = "Abaixo do peso";
+            else if (imc >= 18.5 && imc <= 24.99)
+                situacao = "Peso normal";
+            else if (imc >= 25 && imc <= 29.99)
+                situacao = "Acima do peso";
+            else if (imc >= 30 && imc <= 34.99)
+                situacao = "Obesidade I";
+            else if (imc >= 35 && imc <= 39.99)
+                situacao = "Obesidade II (Severa)"
+            else if (imc >= 40)
+                situacao = "Obesidade III (Mórbida)"
+
+                alert("Seu IMC(Indice de Massa Corporal) é " + imc.toFixed(2) + " - " + situacao);
+        });
+    </script>
+</body>
+</html>
